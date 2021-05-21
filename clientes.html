@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>TheFlaamer</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="clientes">
+                <h2>Lista de clientes</h2>
+                <div id="resultado">
+                    <!--<div class="clientes_single">
+                        <div class="foto"></div>
+                        <div class="conteudo_cliente">
+                            <div class="nome">
+                                <span class="negrito">Nome:</span> fogoasdasd1231d adasjdha
+                            </div>
+                            <div class="endereco">
+                                <span class="negrito">Endereço:</span> daksdj1k3 asdkasjdk askd jskad askdj
+                            </div>
+                            <div class="aniversario"><span class="negrito">Data de aniversário:</span> asdasd</div>
+                            <div class="email"><span class="negrito">E-Mail:</span> dk1k3 sdkakdas kdasd</div>
+                            <div class="telefone"><span class="negrito">Telefone:</span> dkasjdkad
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        const resultado = document.querySelector("#resultado")
+        if (localStorage.hasOwnProperty("pessoas")) {
+            JSON.parse(localStorage.getItem("pessoas")).forEach((pessoa, indice) => {
+                const wraper = document.createElement("div")
+                wraper.className = "clientes_single"
+                wraper.id = indice
+                resultado.appendChild(wraper)
+
+                wraper.innerHTML = `
+                <div class="foto"></div>
+                <div class="conteudo_cliente">
+                            <div class="nome">
+                                <span class="negrito">Nome: </span>${pessoa.cliente.nome}</div>
+                            <div class="endereco">
+                                <span class="negrito">Endereço: </span>${pessoa.cliente.endereco}
+                            </div>
+                            <div class="aniversario"><span class="negrito">Data de aniversário: </span>${pessoa.cliente.aniversario}</div>
+                            <div class="email"><span class="negrito">E-Mail: </span>${pessoa.cliente.email}</div>
+                            <div class="telefone"><span class="negrito">Telefone: </span>${pessoa.cliente.telefone}
+                            </div>
+                        </div>
+                </div>`
+            })
+        }
+    </script>
+</body>
+
+</html>
