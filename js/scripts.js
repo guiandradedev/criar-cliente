@@ -46,22 +46,30 @@ function criarCliente() {
     const end = document.querySelector("#end")
     const email = document.querySelector("#email")
     const tel = document.querySelector("#tel")
-    clientes[indice] = new Pessoa(nome.value, aniv.value, end.value, email.value, tel.value)
+    if (nome.value != "", aniv.value != "", end.value != "", email.value != "", tel.value != "") {
+        clientes[indice] = new Pessoa(nome.value, aniv.value, end.value, email.value, tel.value)
 
+        let pessoas = new Array()
 
-    let pessoas = new Array()
-
-    if (localStorage.hasOwnProperty("pessoas")) {
-        pessoas = JSON.parse(localStorage.getItem("pessoas"))
+        if (localStorage.hasOwnProperty("pessoas")) {
+            pessoas = JSON.parse(localStorage.getItem("pessoas"))
+        }
+        pessoas.push({ cliente: clientes[indice] })
+        localStorage.setItem("pessoas", JSON.stringify(pessoas))
+        nome.value = ""
+        aniv.value = ""
+        end.value = ""
+        email.value = ""
+        tel.value = ""
+        indice++
+        const teste = document.querySelector(".enviado")
+        teste.style.display = "inline-block"
+        setTimeout(() => {
+            teste.style.display = "none"
+        }, 3000);
+    } else {
+        alert("Coloque informações válidas!")
     }
-    pessoas.push({ cliente: clientes[indice] })
-    localStorage.setItem("pessoas", JSON.stringify(pessoas))
-    nome.value = " "
-    aniv.value = " "
-    end.value = " "
-    email.value = " "
-    tel.value = " "
-    indice++
 }
 function criarInstanciaPessoa(obj) {
     return new Pessoa(obj.nome, obj.aniversario, obj.endereco, obj.email, obj.telefone)
