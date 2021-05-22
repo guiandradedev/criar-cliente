@@ -48,6 +48,18 @@
             </section>
         </div>
     </main>
+    <script>
+        const btn = document.querySelector("#enviar")
+        btn.addEventListener("click", e => {
+            e.preventDefault()
+            criarCliente()
+        })
+
+        const btnSair = document.querySelector("#sair")
+        btnSair.addEventListener("click", () => {
+            location.href = "./clientes.html"
+        })
+    </script>
     <script src="js/scripts.js"></script>
 </body>
 

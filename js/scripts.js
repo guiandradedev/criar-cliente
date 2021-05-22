@@ -1,16 +1,5 @@
 const clientes = []
 let indice = 0
-const btn = document.querySelector("#enviar")
-btn.addEventListener("click", e => {
-    e.preventDefault()
-    criarCliente()
-})
-
-const btnSair = document.querySelector("#sair")
-btnSair.addEventListener("click", () => {
-    location.href = "./clientes.html"
-})
-
 class Pessoa {
     constructor(nome, aniversario, endereco, email, telefone) {
         this.nome = nome
@@ -33,6 +22,21 @@ class Pessoa {
     }
     getTelefone = () => {
         return this.telefone
+    }
+    setNome = (novoNome) => {
+        this.nome = novoNome
+    }
+    setTel = (novoTel) => {
+        this.telefone = novoTel
+    }
+    setAniversario = (novoAniv) => {
+        this.aniversario = novoAniv
+    }
+    setEmail = (novoEmail) => {
+        this.email = novoEmail
+    }
+    setEndereco = (novoEnd) => {
+        this.endereco = novoEnd
     }
 }
 
@@ -58,4 +62,7 @@ function criarCliente() {
     email.value = " "
     tel.value = " "
     indice++
+}
+function criarInstanciaPessoa(obj) {
+    return new Pessoa(obj.nome, obj.aniversario, obj.endereco, obj.email, obj.telefone)
 }
