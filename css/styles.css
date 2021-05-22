@@ -187,8 +187,10 @@ button#sair {
 }
 .resultado_pesquisa_single {
     width: 100%;
-    border: 1px solid black;
-    padding: 0 2%;
+    background-color: white;
+    box-shadow: 1px 1px 7px 0.5px black;
+    border-radius: 5px;
+    padding: 1% 2%;
     margin: 10px 0;
     display: flex;
 }
