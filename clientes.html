@@ -11,6 +11,85 @@
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bg-modal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            position: fixed;
+            z-index: 2;
+            top: -200%;
+            left: 0;
+            display: block;
+            transition: 350ms;
+        }
+
+        .modal {
+            width: 90%;
+            max-width: 500px;
+            max-height: 500px;
+            height: auto;
+            background-color: white;
+            box-shadow: 1px 1px 8px 0.8px black;
+            border-radius: 5px;
+            margin: 80px auto 0 auto;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .modal .header-modal span.close {
+            float: right;
+            font-size: 40px;
+            color: #000;
+            margin: 0px 15px;
+            transition: 350ms;
+            cursor: pointer;
+        }
+
+        .modal .header-modal span.close :hover {
+            color: #990000;
+            transition: 350ms;
+        }
+
+        .modal .header-modal>h2 {
+            float: left;
+            font-size: 25px;
+            font-weight: 200;
+            color: #000;
+            margin: 12px;
+            transition: 350ms;
+        }
+
+        .container-modal {
+            padding: 0 2%;
+            width: 100%;
+        }
+
+        .container-modal div input[type=text],
+        .container-modal div input[type=email] {
+            width: 100%;
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+        .container-modal div input[type=text]:focus,
+        .container-modal div input[type=email]:focus {
+            outline: none;
+        }
+
+        .form_wraper_edit {
+            margin: 10px auto;
+            width: 70%;
+        }
+
+        #enviarEdit {
+            width: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,10 +100,10 @@
     </header>
     <main>
         <div class="container">
-            <h2>Pesquisar por:</h2>
+            <h2 id="pesquisaPor">Pesquisar por:</h2>
             <section id="pesquisas">
                 <form>
-                    <!--form-->
+                    <!--
                     <div>
                         <input type="radio" name="info" id="nomeRadio" value="nome">
                         <label for="nomeRadio">Nome</label>
@@ -40,6 +119,9 @@
                     </div>
                     <div><input type="radio" name="info" id="telRadio" value="telefone">
                         <label for="telRadio">Telefone</label>
+                    </div>-->
+                    <div>
+                        <h2 id="pesquisaPor2">Pesquisas:</h2>
                     </div>
                     <div>
                         <input type="text" name="" id="tipoInfo">
@@ -89,8 +171,59 @@
                 </div>
                 <button class="btn" id="sair2">Voltar</button>
             </section>
+            <section class="editar">
+                <div class="bg-modal" id="modal">
+                    <div class="modal">
+                        <div class="header-modal">
+                            <h2>TheFlaamer</h2>
+                            <span class="close" onclick="fecharModal()">&times;</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="container-modal">
+                            <div>
+                                <div class="form_wraper_edit">
+                                    <label for="nomeEdit">Nome:</label>
+                                    <input type="text" id="nomeEdit" required name="nomeEdit"
+                                        placeholder="Insira seu Nome">
+                                </div>
+                                <div class="form_wraper_edit">
+                                    <label for="anivEdit">Data de Aniversário:</label>
+                                    <input type="text" id="anivEdit" required name="anivEdit"
+                                        placeholder="Insira sua data de Aniversário">
+                                </div>
+                                <div class="form_wraper_edit">
+                                    <label for="endEdit">Endereço</label>
+                                    <input type="text" id="endEdit" required name="endEdit"
+                                        placeholder="Insira seu endereço">
+                                </div>
+                                <div class="form_wraper_edit">
+                                    <label for="emailEdit">E-Mail</label>
+                                    <input type="email" id="emailEdit" required name="emailEdit"
+                                        placeholder="Insira seu email">
+                                </div>
+                                <div class="form_wraper_edit">
+                                    <label for="telEdit">Telefone:</label>
+                                    <input type="text" id="telEdit" required name="telEdit"
+                                        placeholder="Insira seu número de telefone">
+                                </div>
+                                <div class="form_wraper_edit">
+                                    <button id="enviarEdit" class="btn">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
+    <script>
+        function abrirModal() {
+            document.getElementById("modal").style.top = "0"
+        }
+        function fecharModal() {
+            document.getElementById("modal").style.top = "-200%"
+        }
+    </script>
     <script src="js/scripts.js"></script>
     <script src="js/clientes.js"></script>
 </body>
